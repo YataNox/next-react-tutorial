@@ -11,14 +11,14 @@
     ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
-        "ecmaFeatures": {"jsx": true},
+        "ecmaFeatures": { "jsx": true },
         "ecmaVersion": "latest",
         "sourceType": "module",
         "project": "./tsconfig.json"
     },
     "plugins": ["@typescript-eslint"],
     "rules": {
-        "no-console": 2
+        "no-console": 1
     },
     "ignorePatterns": ["next.config.js", "tailwind.config.js"]
 }
