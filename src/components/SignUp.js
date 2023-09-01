@@ -29,7 +29,6 @@ function SignUp() {
         if (userData.username.length < 3) {
             alert('Username must be at least 3 characters long.')
             usernameRef.current.focus()
-            return
         }
 
         // Email Validation
@@ -37,7 +36,6 @@ function SignUp() {
         if (!emailRegex.test(userData.email)) {
             alert('Invalid email format!')
             emailRef.current.focus()
-            return
         }
 
         // Password Validation
@@ -48,7 +46,6 @@ function SignUp() {
                 'Password must be at least 8 characters long and include at least one uppercase letter, one lowercase letter, one number, and one special character.',
             )
             passwordRef.current.focus()
-            return
         }
 
         dispatch({ type: 'SHOW_MODAL' })
