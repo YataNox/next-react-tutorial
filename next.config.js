@@ -9,4 +9,11 @@ const nextConfig = {
     },
 }
 
+module.exports = {
+    generateBuildId: async () => {
+        // You can, for example, get the latest git commit hash here
+        return 'BUILD_ID'
+    },
+}
+
 module.exports = nextConfig
