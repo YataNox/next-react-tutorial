@@ -1,7 +1,6 @@
 import React, { useContext } from 'react'
 import { ModalContext, ModalDispatchContext } from '../context/ModalContext'
 import LoginForm from './LoginForm'
-import '../styles/ModalStyles.css'
 
 function Modal(props) {
     return (

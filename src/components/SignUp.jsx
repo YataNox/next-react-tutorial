@@ -1,10 +1,11 @@
 'use client'
 
 import React, { useState, useRef, useContext } from 'react'
-import { ModalContext } from '../context/ModalContext'
+import { ModalDispatchContext, useModalDispatch } from '../context/ModalContext'
 
 function SignUp() {
-    const { dispatch } = useContext(ModalContext)
+    //const { dispatch } = useContext(ModalContext)
+    const dispatch = useModalDispatch()
     const [userData, setUserData] = useState({
         username: '',
         email: '',
@@ -29,12 +30,14 @@ function SignUp() {
         if (userData.username.length < 3) {
             alert('Username must be at least 3 characters long.')
             usernameRef.current.focus()
+            return
         }
         // Email Validation
         const emailRegex = /\S+@\S+\.\S+/
         if (!emailRegex.test(userData.email)) {
             alert('Invalid email format!')
             emailRef.current.focus()
+            return
         }
         // Password Validation
         const passwordRegex =
@@ -44,6 +47,7 @@ function SignUp() {
                 'Password must be at least 8 characters long and include at least one uppercase letter, one lowercase letter, one number, and one special character.',
             )
             passwordRef.current.focus()
+            return
         }
         dispatch({ type: 'SHOW_MODAL' })
         console.log('Test', 'Hello', 'World', e)

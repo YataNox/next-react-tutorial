@@ -1,6 +1,6 @@
 'use client'
 
-import React, { createContext, useReducer, Dispatch } from 'react'
+import React, { createContext, useReducer, Dispatch, useContext } from 'react'
 import Modal from '../components/Modal'
 
 const initialState = { isVisible: false }
@@ -30,6 +30,17 @@ const ModalProvider = ({ children }) => {
             </ModalContext.Provider>
         </ModalDispatchContext.Provider>
     )
+}
+
+export function useModalState() {
+    const state = useContext(ModalContext)
+    if (!state) throw new Error('ModalProvider not found')
+    return state
+}
+export function useModalDispatch() {
+    const dispatch = useContext(ModalDispatchContext)
+    if (!dispatch) throw new Error('ModalDispatchProvider not found')
+    return dispatch
 }
 
 export { ModalContext, ModalProvider }
