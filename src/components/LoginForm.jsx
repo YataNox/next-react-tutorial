@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react'
 import { useForm } from 'react-hook-form'
 
@@ -8,8 +10,12 @@ function LoginForm() {
         console.log(data)
     }
 
+    const onError = data => {
+        console.log(data)
+    }
+
     return (
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit(onSubmit, onError)}>
             <input
                 {...register('email', { required: true })}
                 placeholder="Email"
