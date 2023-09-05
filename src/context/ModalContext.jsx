@@ -13,19 +13,20 @@ function modalReducer(state, action) {
         case 'SHOW_MODAL':
             return { ...state, isVisible: true }
         case 'HIDE_MODAL':
+            console.log('확인용 Hide')
             return { ...state, isVisible: false }
         default:
             return state
     }
 }
-/* signup submit시 리렌더링 과정에서 modal창도 리렌더링 되어 SHOW 처리가 안됌.. */
+
 const ModalProvider = ({ children }) => {
     const [state, dispatch] = useReducer(modalReducer, initialState)
     return (
         <ModalDispatchContext.Provider value={dispatch}>
             <ModalContext.Provider value={state}>
                 {children}
-                <Modal />
+                <Modal state={state} dispatch={dispatch} />
             </ModalContext.Provider>
         </ModalDispatchContext.Provider>
     )

@@ -15,6 +15,7 @@ function SignUp() {
     const passwordRef = useRef(null)
 
     const handleInputChange = e => {
+        console.log(e)
         const { name, value } = e.target
         setUserData(prevData => ({
             ...prevData,
@@ -24,20 +25,17 @@ function SignUp() {
 
     const handleSubmit = e => {
         e.preventDefault()
-
         // Username Validation
         if (userData.username.length < 3) {
             alert('Username must be at least 3 characters long.')
             usernameRef.current.focus()
         }
-
         // Email Validation
         const emailRegex = /\S+@\S+\.\S+/
         if (!emailRegex.test(userData.email)) {
             alert('Invalid email format!')
             emailRef.current.focus()
         }
-
         // Password Validation
         const passwordRegex =
             /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/
@@ -47,13 +45,13 @@ function SignUp() {
             )
             passwordRef.current.focus()
         }
-
         dispatch({ type: 'SHOW_MODAL' })
+        console.log('Test', 'Hello', 'World', e)
     }
 
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
+        <>
+            <div>
                 <input
                     ref={usernameRef}
                     type="text"
@@ -78,9 +76,9 @@ function SignUp() {
                     value={userData.password}
                     onChange={handleInputChange}
                 />
-                <button type="submit">Sign Up</button>
-            </form>
-        </div>
+            </div>
+            <button onClick={handleSubmit}>Sign Up</button>
+        </>
     )
 }
 
