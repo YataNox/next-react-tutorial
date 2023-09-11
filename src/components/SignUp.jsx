@@ -1,11 +1,11 @@
 'use client'
 
 import React, { useState, useRef, useContext } from 'react'
-import { ModalDispatchContext, useModalDispatch } from '../context/ModalContext'
+import { ModalContext } from '../context/ModalContext'
 
 function SignUp() {
-    //const { dispatch } = useContext(ModalContext)
-    const dispatch = useModalDispatch()
+    const { dispatch } = useContext(ModalContext)
+    //const dispatch = useModalDispatch()
     const [userData, setUserData] = useState({
         username: '',
         email: '',
