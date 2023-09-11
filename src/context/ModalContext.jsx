@@ -13,7 +13,6 @@ function modalReducer(state, action) {
         case 'SHOW_MODAL':
             return { ...state, isVisible: true }
         case 'HIDE_MODAL':
-            console.log('확인용 Hide')
             return { ...state, isVisible: false }
         default:
             return state
